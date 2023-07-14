@@ -6,7 +6,7 @@ using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
+
 
 namespace API.Controllers
 {
@@ -18,7 +18,7 @@ namespace API.Controllers
         public AccountController(DataContext context, ITokenService tokenService)
         {
             _context = context;
-            this._tokenService = tokenService;
+            _tokenService = tokenService;
         }
         [HttpPost("register")] //POST: api/account/register
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
@@ -67,10 +67,8 @@ namespace API.Controllers
             };
 
         }
- 
 
-
-        private Task<bool> UserExists(string userName)
+        private async Task<bool> UserExists(string userName)
         {
             throw new NotImplementedException();
         }
